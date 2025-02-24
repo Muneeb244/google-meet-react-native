@@ -17,8 +17,8 @@ export const useUserStore = create()(
                 }
             },
             removeSession: (sessionId) => {
-                const {sessionId} = get()
-                const updatedSession = sessionId.filter(s => s!== sessionId)
+                const {sessions} = get()
+                const updatedSession = sessions.filter(s => s!== sessionId)
                 set({
                     sessions: updatedSession,
                 });

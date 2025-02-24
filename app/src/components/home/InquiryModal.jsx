@@ -40,14 +40,14 @@ const InquiryModal = ({ visible, onClose }) => {
             transparent={true}
             onRequestClose={onClose}
         >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={inquiryStyles.modalContainer}>
                     <KeyboardAvoidingView
                         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                         style={inquiryStyles.keyboardAvoidingView}
                     >
                         <ScrollView contentContainerStyle={inquiryStyles.scrollViewContent}>
-                            <View style={inquiryStyles.modalContainer}>
+                            <View style={inquiryStyles.modalContent}>
                                 <Text style={inquiryStyles.title} >Enter Your Details</Text>
                                 <TextInput
                                     style={inquiryStyles.input}

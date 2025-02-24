@@ -35,6 +35,7 @@ const JoinMeetScreen = () => {
 
   const joinViaSessionId = async () => {
     const isAvailable = await checkSession(code);
+    console.log(isAvailable);
     if(isAvailable) {
       emit('prepare-session', {
         userId: user?.id,
