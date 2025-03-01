@@ -45,15 +45,15 @@ export const requestPermissions = async () => {
 };
 
 const logPermissionStatus = (permission, status) => {
-  // if (status === RESULTS.GRANTED) {
-  //   console.log(`${permission} PERMISSION GRANTED ✅`);
-  // } else if (status === RESULTS.DENIED) {
-  //   console.log(`${permission} PERMISSION DENIED ❌`);
-  // } else if (status === RESULTS.BLOCKED) {
-  //   console.log(`${permission} PERMISSION BLOCKED 🚫`);
-  // } else {
-  //   console.log(`${permission} PERMISSION STATUS: ${status}`);
-  // }
+  if (status === RESULTS.GRANTED) {
+    console.log(`${permission} PERMISSION GRANTED ✅`);
+  } else if (status === RESULTS.DENIED) {
+    console.log(`${permission} PERMISSION DENIED ❌`);
+  } else if (status === RESULTS.BLOCKED) {
+    console.log(`${permission} PERMISSION BLOCKED 🚫`);
+  } else {
+    console.log(`${permission} PERMISSION STATUS: ${status}`);
+  }
 };
 
 export const addHyphens = str => {
