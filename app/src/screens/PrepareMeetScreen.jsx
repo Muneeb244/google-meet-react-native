@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useWS } from '../service/api/WSProvider'
 import { useLiveMeetStore } from '../service/meetStore';
@@ -8,7 +8,7 @@ import { addHyphens, requestPermissions } from '../utils/Helpers';
 import { goBack, prepareNavigation, replace } from '../utils/NavigationUtils';
 import { prepareStyles } from '../styles/prepareStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronLeft, EllipsisVertical } from 'lucide-react-native';
+import { ChevronLeft, EllipsisVertical, Info, Mic, MicOff, MonitorUp, Share, Shield, Video, VideoOff } from 'lucide-react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '../utils/Constants';
 
@@ -23,7 +23,7 @@ const PrepareMeetScreen = () => {
 
   useEffect(() => {
     const handleParticipantUpdate = updatedPart => {
-      setParticipants(updatedPart);
+      setParticipants(updatedPart?.participants);
     }
 
     on('session-info', handleParticipantUpdate)
@@ -121,7 +121,7 @@ const PrepareMeetScreen = () => {
   }
 
   const renderParticipant = () => {
-    if (participants.length === 0) {
+    if (participants?.length === 0) {
       return 'No one is in the call yet';
     }
 
@@ -165,9 +165,75 @@ const PrepareMeetScreen = () => {
                 style={prepareStyles.image}
               />
             )}
+
+            <View style={prepareStyles.toggleContainer}>
+              <TouchableOpacity
+                onPress={() => toggleLocal('mic')}
+                style={prepareStyles.iconButton}
+              >
+                {
+                  micOn ? (
+                    <Mic size={RFValue(12)} color={'#fff'} />
+                  ) : (
+                    <MicOff size={RFValue(12)} color={'#fff'} />
+                  )
+                }
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => toggleLocal('video')}
+                style={prepareStyles.iconButton}
+              >
+                {
+                  videoOn ? (
+                    <Video size={RFValue(12)} color={'#fff'} />
+                  ) : (
+                    <VideoOff size={RFValue(12)} color={'#fff'} />
+                  )
+                }
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <TouchableOpacity style={prepareStyles.buttonContainer}>
+            <MonitorUp size={RFValue(14)} color={Colors.primary} />
+            <Text style={prepareStyles.buttonText}>Share Screen</Text>
+          </TouchableOpacity>
+
+          <Text
+            style={prepareStyles.peopleText}
+          >
+            {renderParticipant()}
+          </Text>
+        </View>
+
+        <View style={prepareStyles.infoContainer}>
+          <View style={prepareStyles.flexRowBetween}>
+            <Info size={RFValue(14)} color={Colors.text} />
+            <Text style={prepareStyles.joiningText}>Joining information</Text>
+            <Share size={RFValue(14)} color={Colors.text} />
+          </View>
+          <View style={{ marginLeft: 38 }}>
+            <Text style={prepareStyles.linkHeader}>Meeting Link</Text>
+            <Text style={prepareStyles.LinkText}>
+              meet.google.com/{addHyphens(sessionId)}
+            </Text>
+          </View>
+          <View style={prepareStyles.flexRow}>
+            <Shield size={RFValue(14)} color={Colors.text} />
+            <Text style={prepareStyles.encryptionText}>Encryption</Text>
           </View>
         </View>
       </ScrollView>
+
+      <View style={prepareStyles.joinContainer}>
+        <TouchableOpacity
+          style={prepareStyles.joinButton}
+          onPress={handleStartCall}>
+          <Text style={prepareStyles.joinButtonText}>Join</Text>
+        </TouchableOpacity>
+        <Text style={prepareStyles.noteText}>Joining as</Text>
+        <Text style={prepareStyles.peopleText}>{user?.name}</Text>
+      </View>
     </View>
   )
 }
