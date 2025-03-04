@@ -8,6 +8,13 @@ export const useLiveMeetStore = create()(
     participants: [],
     micOn: false,
     videoOn: false,
+
+    clear: () =>
+      set({
+        sessionId: null,
+        participants: [],
+      }),
+
     addSessionId: id => {
       set({sessionId: id});
     },
