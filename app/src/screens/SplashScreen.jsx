@@ -14,7 +14,7 @@ const SplashScreen = () => {
   }, [])
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={require('../assets/images/g.png')} style={styles.image} />
     </View>
   )

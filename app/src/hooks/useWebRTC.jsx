@@ -10,7 +10,7 @@ export const useWebRTC = () => {
     const { user } = useUserStore();
 
     const [localStream, setLocalStream] = useState(null);
-    const { emit, no, off } = useWS();
+    const { emit, on, off } = useWS();
     const peerConnections = useRef(new Map());
     const pendingCandidates = useRef(new Map());
 
@@ -85,7 +85,7 @@ export const useWebRTC = () => {
     useEffect(() => {
         startLocalStream();
         if (localStream) {
-            return () => localStream?.getTracks?.forEach(track => track.stop())
+            return () => localStream?.getTracks()?.forEach(track => track.stop())
         }
     }, [])
 
@@ -114,7 +114,7 @@ export const useWebRTC = () => {
 
             }
         }
-    }, localStream)
+    }, [localStream])
 
     const handleNewParticipant = participant => {
         if (participant?.userId === user?.id) {

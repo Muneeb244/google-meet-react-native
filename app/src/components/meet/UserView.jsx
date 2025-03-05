@@ -90,7 +90,7 @@ const UserView = ({ containerDimensions, localStream }) => {
     ).current;
 
     return (
-        <Animated.View {...panResponder.panHandlers} style={[styles.container, { transform: [{ translateX: pan.x, translateY: pan.y }] }]}>
+        <Animated.View {...panResponder.panHandlers} style={[styles.container, { transform: [{ translateX: pan.x}, {translateY: pan.y }] }]}>
             {user && (
                 <>
                     {

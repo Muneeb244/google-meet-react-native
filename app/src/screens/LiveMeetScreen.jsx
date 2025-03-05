@@ -3,6 +3,11 @@ import React from 'react'
 import { useContainerDimensions } from '../hooks/useContainerDimensions'
 import { useWebRTC } from '../hooks/useWebRTC';
 import UserView from '../components/meet/UserView';
+import People from '../components/meet/People';
+import NoUserInvite from '../components/meet/NoUserInvite';
+import MeetFooter from '../components/meet/MeetFooter';
+import MeetHeader from '../components/meet/MeetHeader';
+import { peopleData } from '../utils/dummyData';
 
 const LiveMeetScreen = () => {
 
@@ -20,9 +25,21 @@ const LiveMeetScreen = () => {
               localStream={localStream}
               containerDimensions={containerDimensions}
             />
+          )}
+
+        {
+          peopleData?.length > 0 ? (
+            <People
+              people={peopleData}
+              containerDimensions={containerDimensions}
+            />
+          ) : (
+            <NoUserInvite />
           )
         }
+        
       </View>
+      <MeetFooter toggleMic={toggleMic} toggleVideo={toggleVideo} />
     </View>
   )
 }

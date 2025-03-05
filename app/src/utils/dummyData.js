@@ -13,15 +13,15 @@ export const user = {
 
 export const peopleData = [
   {
-    name: 'Alice',
+    name: 'Hammad',
     speaking: true,
     micOn: false,
     videoOn: true,
-    photo: getRandomImage('women'),
+    photo: getRandomImage('men'),
   },
   {name: 'Bob', micOn: false, videoOn: false, photo: getRandomImage('men')},
   {
-    name: 'Charlie',
+    name: 'Ahmad',
     micOn: true,
     videoOn: true,
 
@@ -29,18 +29,18 @@ export const peopleData = [
   },
   {name: 'David', micOn: false, videoOn: true, photo: getRandomImage('men')},
   {
-    name: 'Eve',
+    name: 'Haziq',
     micOn: false,
     videoOn: false,
-    photo: getRandomImage('women'),
+    photo: getRandomImage('men'),
   },
   {name: 'Frank', micOn: true, videoOn: true, photo: getRandomImage('men')},
   {
-    name: 'Grace',
+    name: 'Bilal',
     micOn: false,
     videoOn: true,
-    photo: getRandomImage('women'),
+    photo: getRandomImage('men'),
   },
-  {name: 'Hank', micOn: true, videoOn: false, photo: getRandomImage('men')},
-  {name: 'Ivy', micOn: false, videoOn: true, photo: getRandomImage('women')},
+  {name: 'Basit', micOn: true, videoOn: false, photo: getRandomImage('men')},
+  {name: 'Umer', micOn: false, videoOn: true, photo: getRandomImage('men')},
 ];

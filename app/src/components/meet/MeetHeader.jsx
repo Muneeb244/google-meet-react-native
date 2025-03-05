@@ -1,9 +1,9 @@
-import { Platform, StyleSheet, Text, SafeAreaView } from 'react-native'
+import { Platform, StyleSheet, Text, SafeAreaView, View } from 'react-native'
 import React from 'react'
 import { useLiveMeetStore } from '../../service/meetStore'
 import LinearGradient from 'react-native-linear-gradient';
 import { addHyphens } from '../../utils/Helpers';
-import { SwitchCamera, Volume } from 'lucide-react-native';
+import { SwitchCamera, Volume, Volume1, Volume2 } from 'lucide-react-native';
 
 const MeetHeader = ({ switchCamera }) => {
 
@@ -21,7 +21,7 @@ const MeetHeader = ({ switchCamera }) => {
                 </Text>
                 <View style={styles.icons}>
                     <SwitchCamera onPress={switchCamera} color={'#fff'} size={24} />
-                    <Volume color={'white'} size={25} style={styles.iconSpacing} />
+                    <Volume2 color={'white'} size={25} style={styles.iconSpacing} />
                 </View>
             </View>
         </LinearGradient>
